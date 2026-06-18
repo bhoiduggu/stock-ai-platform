@@ -1,0 +1,27 @@
+from fastapi import FastAPI
+
+app = FastAPI(title="Stock AI")
+
+@app.get("/")
+def root():
+    return {
+        "message": "Stock AI Backend Running"
+    }
+
+@app.get("/health")
+def health():
+    return {
+        "status": "healthy"
+    }
+
+@app.get("/analyze/{symbol}")
+def analyze(symbol: str):
+    return {
+        "symbol": symbol.upper(),
+        "close_price": 1332.70,
+        "rsi": 53.65,
+        "sma20": 1312.01,
+        "sma50": 1346.02,
+        "trend": "DOWNTREND",
+        "signal": "HOLD"
+    }
